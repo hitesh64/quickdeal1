@@ -10,12 +10,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGO_URI =
   process.env.MONGO_URI ||
-  "mongodb+srv://kunal:KdVygwFo0Anau8uX@hitesh.cqczgkd.mongodb.net/quickdeal"; // Add your DB name
+  "mongodb+srv://kunal:KdVygwFo0Anau8uX@hitesh.cqczgkd.mongodb.net/quickdeal"; // Replace with your MongoDB URI
 
 // 🧩 Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public")); // Optional if you serve frontend files from here
+app.use(express.static("public")); // Optional: serve frontend static files if any
 
 // ✅ Connect MongoDB
 mongoose
@@ -40,7 +40,7 @@ const projectSchema = new mongoose.Schema({
 
 const Project = mongoose.model("Project", projectSchema);
 
-// ✅ Test Route
+// ✅ Health Check Route
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Server is running 🚀" });
 });
@@ -60,7 +60,5 @@ app.post("/api/submit-project", async (req, res) => {
   }
 });
 
-// ✅ Start Server
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+// ✅ Vercel-ready export
+export default app;
