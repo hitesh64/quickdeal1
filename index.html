@@ -1541,7 +1541,7 @@ projectForm.addEventListener('submit', async (e) => {
 
         console.log('Submitting form data:', formData);
 
-       const response = await fetch('http://localhost:3000/api/submit-project', {
+       const response = await fetch('/api/submit-project', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(formData)
@@ -1596,7 +1596,7 @@ projectForm.addEventListener('submit', async (e) => {
 // Test server connection on page load
 window.addEventListener('load', async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/health');
+        const response = await fetch('/api/health');
         if (response.ok) {
             const data = await response.json();
             console.log('Server health check:', data);
