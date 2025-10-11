@@ -2,12 +2,9 @@
   "name": "quickdeal-server",
   "version": "1.0.0",
   "description": "Backend server for QuickDeal project form using MongoDB",
-  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "fixport": "powershell -Command \"Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }\""
+    "dev": "node api/submit-project.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
